@@ -16,7 +16,7 @@ if [[ "$cur_branch" =~ $protected_branches ]]; then
         echo -e "${hook_name}: don't force-push to $cur_branch"
         exit 1
     else
-        echo -ne "${hook_name}: are you aware that you are on branch ${cur_branch}? "
+        echo -e "${hook_name}: are you aware that you are on branch ${cur_branch}?"
         read confirmation < /dev/tty
         if [[ ! "$confirmation" =~ $affirmative ]]; then
             exit 2
