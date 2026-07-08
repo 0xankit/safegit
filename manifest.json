@@ -1,0 +1,25 @@
+{
+  "hooks": [
+    {
+      "id": "whitespace-newline",
+      "name": "Pre-commit: whitespace and newline check",
+      "git_hook": "pre-commit",
+      "path": "hooks/pre-commit/whitespace-newline.sh",
+      "description": "Rejects object files, spaces in filenames, missing trailing newline, and trailing whitespace."
+    },
+    {
+      "id": "protected-branches",
+      "name": "Pre-push: protected branch guard",
+      "git_hook": "pre-push",
+      "path": "hooks/pre-push/protected-branches.sh",
+      "description": "Blocks force-push/delete to protected branches and asks before pushing from protected branches."
+    },
+    {
+      "id": "copy-commit-hash",
+      "name": "Post-commit: copy latest commit hash",
+      "git_hook": "post-commit",
+      "path": "hooks/post-commit/copy-commit-hash.sh",
+      "description": "Copies latest commit hash after commit."
+    }
+  ]
+}
