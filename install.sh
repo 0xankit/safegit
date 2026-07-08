@@ -34,7 +34,22 @@ jq -r '.hooks[] | "\(.id): \(.name)\n  \(.description)\n"' "$manifest"
 echo
 echo "Enter hook ids to enable, separated by spaces."
 echo "Example: whitespace-newline protected-branches"
-read -r -p "> " selected
+
+prompt_input() {
+  local prompt="$1"
+  local value
+
+  if [ -r /dev/tty ]; then
+    read -r -p "$prompt" value < /dev/tty
+  else
+    echo "Error: interactive input requires a terminal."
+    exit 1
+  fi
+
+  printf '%s\n' "$value"
+}
+
+selected="$(prompt_input '> ')"
 
 [ -n "$selected" ] || {
   echo "No hooks selected."
